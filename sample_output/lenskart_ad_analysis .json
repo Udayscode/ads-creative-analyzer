@@ -1,0 +1,222 @@
+{
+  "scores": [
+    {
+      "ad_id": "lenskart_01",
+      "total": 64,
+      "dimensions": {
+        "hook_strength": 12,
+        "offer_clarity": 20,
+        "trust_signals": 0,
+        "visual_copy_alignment": 12,
+        "mobile_legibility": 20
+      }
+    },
+    {
+      "ad_id": "lenskart_02",
+      "total": 72,
+      "dimensions": {
+        "hook_strength": 12,
+        "offer_clarity": 20,
+        "trust_signals": 0,
+        "visual_copy_alignment": 20,
+        "mobile_legibility": 20
+      }
+    },
+    {
+      "ad_id": "lenskart_03",
+      "total": 72,
+      "dimensions": {
+        "hook_strength": 12,
+        "offer_clarity": 20,
+        "trust_signals": 0,
+        "visual_copy_alignment": 20,
+        "mobile_legibility": 20
+      }
+    },
+    {
+      "ad_id": "lenskart_04",
+      "total": 72,
+      "dimensions": {
+        "hook_strength": 20,
+        "offer_clarity": 20,
+        "trust_signals": 0,
+        "visual_copy_alignment": 12,
+        "mobile_legibility": 20
+      }
+    },
+    {
+      "ad_id": "lenskart_05",
+      "total": 77,
+      "dimensions": {
+        "hook_strength": 12,
+        "offer_clarity": 20,
+        "trust_signals": 5,
+        "visual_copy_alignment": 20,
+        "mobile_legibility": 20
+      }
+    },
+    {
+      "ad_id": "lenskart_06",
+      "total": 68,
+      "dimensions": {
+        "hook_strength": 20,
+        "offer_clarity": 16,
+        "trust_signals": 0,
+        "visual_copy_alignment": 12,
+        "mobile_legibility": 20
+      }
+    },
+    {
+      "ad_id": "lenskart_07",
+      "total": 56,
+      "dimensions": {
+        "hook_strength": 12,
+        "offer_clarity": 12,
+        "trust_signals": 0,
+        "visual_copy_alignment": 20,
+        "mobile_legibility": 12
+      }
+    },
+    {
+      "ad_id": "lenskart_08",
+      "total": 64,
+      "dimensions": {
+        "hook_strength": 12,
+        "offer_clarity": 20,
+        "trust_signals": 0,
+        "visual_copy_alignment": 12,
+        "mobile_legibility": 20
+      }
+    },
+    {
+      "ad_id": "lenskart_09",
+      "total": 80,
+      "dimensions": {
+        "hook_strength": 20,
+        "offer_clarity": 20,
+        "trust_signals": 0,
+        "visual_copy_alignment": 20,
+        "mobile_legibility": 20
+      }
+    },
+    {
+      "ad_id": "lenskart_10",
+      "total": 62,
+      "dimensions": {
+        "hook_strength": 12,
+        "offer_clarity": 20,
+        "trust_signals": 0,
+        "visual_copy_alignment": 10,
+        "mobile_legibility": 20
+      }
+    }
+  ],
+  "patterns": {
+    "winning_patterns": [
+      {
+        "pattern": "Aggressive Price Anchoring & Square Format",
+        "description": "Top performers utilize 'aspect_ratio: square' and lead with specific, low-barrier price points or free offers in the 'hook_text' and 'price_visible' fields, whereas bottom performers hide pricing.",
+        "evidence": [
+          "lenskart_09",
+          "lenskart_05"
+        ],
+        "confidence": "high"
+      },
+      {
+        "pattern": "Vibrant Color Contrast Hooks",
+        "description": "Winning ads use high-contrast 'dominant_colors' like orange or light green against neutral backgrounds to create a 'pattern_interrupt: true' visual, while bottom ads use more muted or generic blue/white palettes.",
+        "evidence": [
+          "lenskart_09",
+          "lenskart_02"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "pattern": "Celebrity & Status Signaling",
+        "description": "The presence of 'has_celebrity: true' or high-status aspirational copy tied to specific low price points (\u20b999) drives higher performance than generic functional benefits.",
+        "evidence": [
+          "lenskart_05"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "losing_patterns": [
+      {
+        "pattern": "Portrait Format Friction",
+        "description": "Consistently, ads with 'aspect_ratio: portrait' appear in the bottom performers, suggesting the creative layout or platform placement for this format is not resonating as well as square assets.",
+        "evidence": [
+          "lenskart_08",
+          "lenskart_10",
+          "lenskart_07"
+        ],
+        "confidence": "high"
+      },
+      {
+        "pattern": "Generic Aspirational Hooks",
+        "description": "Bottom performers rely on the exact same 'hook_text' ('Built for the bold. Designed for the driven.') which lacks a specific 'value_proposition' or 'discount_present', leading to lower engagement.",
+        "evidence": [
+          "lenskart_08",
+          "lenskart_07"
+        ],
+        "confidence": "high"
+      },
+      {
+        "pattern": "Functional Overload",
+        "description": "Ads focusing on 'tone: functional' and solving technical problems (foggy lenses) without a strong financial 'offer' or 'discount_type' underperform compared to style-led ads.",
+        "evidence": [
+          "lenskart_10"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "brand_creative_signature": "Lenskart's creative style is defined by high-saturation, product-focused lifestyle photography that emphasizes color-coordinated frames against clean, minimalist backgrounds. They rely on a mix of aspirational 'boardroom' messaging and aggressive 'Buy 1 Get 1' or entry-level pricing hooks to drive conversion.",
+    "biggest_gap": "Complete absence of 'has_ugc', 'has_reviews', or 'has_ratings' across all 10 ads, missing a massive opportunity to build trust through social proof."
+  },
+  "ideas": [
+    {
+      "idea_title": "The \u20b999 Unboxing Review",
+      "format": "video",
+      "hook_concept": "A customer unboxing a premium-looking frame with a text overlay saying 'I only paid \u20b999 for these.'",
+      "headline_draft": "Premium Frames. Pocket-Friendly Price.",
+      "visual_brief": "A 1:1 square video featuring a selfie-style unboxing. The bottom third of the frame should feature a persistent '\u20b999' price tag in a high-contrast orange bubble.",
+      "hypothesis": "Addressing the 'Biggest Gap' (UGC/Social Proof) while leveraging 'Pattern 1' (Price Anchoring) will build the trust necessary to convert low-price offers.",
+      "priority": "high"
+    },
+    {
+      "idea_title": "Vibrant Celeb Status Pop",
+      "format": "static",
+      "hook_concept": "A celebrity wearing neon-framed glasses against a high-contrast vibrant orange background.",
+      "headline_draft": "Look Like a Star for Just \u20b9999.",
+      "visual_brief": "Square format featuring a high-saturation orange background. Use a celebrity image with high-status styling, ensuring the eyewear color (e.g., light green) creates a 'pattern_interrupt' against the background.",
+      "hypothesis": "Combines 'Pattern 2' (Vibrant Color Contrast) with 'Pattern 3' (Celebrity Signaling) to maximize scroll-stop and aspirational value.",
+      "priority": "high"
+    },
+    {
+      "idea_title": "5-Star Price Anchor Carousel",
+      "format": "carousel",
+      "hook_concept": "Large 5-star rating stars appearing over the first frame's product with '1M+ Happy Customers' text.",
+      "headline_draft": "India's Highest Rated Eyewear \u2014 From \u20b999",
+      "visual_brief": "1:1 square cards. Card 1 shows a best-selling frame with a '4.9/5' star badge and '\u20b999' price anchor. Subsequent cards show different styles with short 1-line customer testimonials.",
+      "hypothesis": "Directly solves the 'Biggest Gap' (Social Proof) while maintaining the winning 'Pattern 1' (Square format & aggressive price anchoring).",
+      "priority": "high"
+    },
+    {
+      "idea_title": "Neon Price Interrupt",
+      "format": "static",
+      "hook_concept": "Large, bold 'FREE' or '\u20b90' text in light green on a dark neutral background.",
+      "headline_draft": "Your First Frame is on Us!",
+      "visual_brief": "Square layout with a minimalist shot of a premium frame centered. Surround the frame with a vibrant light green geometric border that pops against a dark grey background to draw eyes to the price.",
+      "hypothesis": "Uses 'Pattern 2' (Color Contrast) to draw immediate attention to the 'Pattern 1' (Aggressive Price Anchor) of the 'Free' offer.",
+      "priority": "medium"
+    },
+    {
+      "idea_title": "CEO Look for Less (UGC)",
+      "format": "video",
+      "hook_concept": "Creator says 'How I look like a CEO on a budget' while putting on Lenskart glasses.",
+      "headline_draft": "The Boardroom Look. Starting at \u20b9999.",
+      "visual_brief": "A 'Get Ready With Me' style video where a creator transitions from casual to professional. Include a 'Verified Buyer' badge and a '4.8 Star' overlay in the top right corner.",
+      "hypothesis": "Merges 'Pattern 3' (Status Signaling/Boardroom messaging) with the 'Biggest Gap' (UGC/Social Proof) to make the aspirational lifestyle feel attainable and trustworthy.",
+      "priority": "medium"
+    }
+  ]
+}
