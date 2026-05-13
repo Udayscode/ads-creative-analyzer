@@ -1,8 +1,8 @@
 # Ads Creative Analyzer
 
-Upload 10–15 ad images from any brand. Get a structured breakdown of each, a ranked performance score, cross-ad pattern analysis, and 3–5 concrete ideas to test next.
+Upload ad images from any brand. Get a structured breakdown of each, a ranked performance score, cross-ad pattern analysis, and 3–5 concrete ideas to test next.
 
-**[Live Demo →](https://your-link.streamlit.app)**
+**[Live Demo →](https://ads-creative-analyzer.streamlit.app/)**
 
 ---
 
@@ -65,6 +65,7 @@ images → Gemini Vision (extract structure per ad)
 ```
 
 **Data flow:**
+```
 1. User uploads 12–15 ad images (PNG/JPG)
          │
          ▼
@@ -95,6 +96,7 @@ images → Gemini Vision (extract structure per ad)
    - Pattern report
    - Test ideas
    - Export button (JSON / Markdown)
+```
 ---
 
 ## Setup
@@ -121,7 +123,7 @@ Get a free API key at [aistudio.google.com](https://aistudio.google.com).
 
 ## Running it
 
-Drop 10–15 ad images into `data/sample_ads/` or use the in-app uploader, enter a brand name, and hit **Run Analysis**.
+Drop ad images into `data/sample_ads/` or use the in-app uploader, enter a brand name, and hit **Run Analysis**.
 
 A ~15s cooldown bar appears between images — this is intentional rate-limit handling for the free API tier, not a bug. Full analysis for 15 ads takes about 4–5 minutes.
 
