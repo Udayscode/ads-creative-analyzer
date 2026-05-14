@@ -59,8 +59,8 @@ images → Gemini Vision (extract structure per ad)
                           │
                           ▼
           ┌───────────────────────────────┐
-          │            Gemini             │
-          │  Vision + Text completions    │
+          │      Gemini for Vision        │
+          │  Groq for Text completions    │
           └───────────────────────────────┘
 ```
 
@@ -107,6 +107,7 @@ git clone https://github.com/Udayscode/ads-creative-analyzer
 cd ads-creative-analyzer
 uv venv && uv pip install -r requirements.txt
 echo 'GEMINI_API_KEY="your-key"' > .env
+echo 'GROQ_API_KEY="your-key"' > .env
 uv run streamlit run main.py
 ```
 
@@ -114,10 +115,11 @@ uv run streamlit run main.py
 ```bash
 pip install -r requirements.txt
 echo 'GEMINI_API_KEY="your-key"' > .env
+echo 'GROQ_API_KEY="your-key"' > .env
 streamlit run main.py
 ```
 
-Get a free API key at [aistudio.google.com](https://aistudio.google.com).
+Get free API key at [aistudio.google.com](https://aistudio.google.com) & [console.groq.com](https://console.groq.com).
 
 ---
 
