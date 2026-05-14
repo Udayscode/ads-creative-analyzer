@@ -7,12 +7,14 @@ except ImportError:
     tqdm = lambda x, **k: x
 
 from google import genai
+from groq import Groq
 
-from app.config import GEMINI_API_KEY, TEXT_MODEL
+from app.config import GEMINI_API_KEY, GROQ_API_KEY, TEXT_MODEL
 from app.prompts.ideas import IDEAS_PROMPT
 
-client = genai.Client(api_key=GEMINI_API_KEY)
+# client = genai.Client(api_key=GEMINI_API_KEY)
 
+groq_client = Groq(api_key=GROQ_API_KEY)
 
 def _clean_json(text: str) -> str:
     text = text.strip()
@@ -36,30 +38,19 @@ def generate_ideas(pattern_report: dict, brand: str) -> list[dict]:
         signature=sig,
     )
 
-    for attempt in range(5):
-        try:
-            response = client.models.generate_content(
-                model=TEXT_MODEL,
-                contents=prompt,
-                config={"temperature": 0.4},
-            )
-            break
-        except Exception as e:
-            if ("429" in str(e) or "503" in str(e)) and attempt < 4:
-                error_str = str(e)
-                delay = 15
-                match = re.search(r"retry in ([\d\.]+)s", error_str)
-                if match:
-                    delay = int(float(match.group(1))) + 5
-                print(f"[IdeaGenerator] API paused. Sleeping for {delay}s...")
-                for _ in tqdm(range(delay), desc="Retrying Ideas in", leave=False):
-                    time.sleep(1)
-            else:
-                raise
+    try:
+        response = groq_client.chat.completions.create(
+            model=TEXT_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.4,
+        )
+        response_text = response.choices[0].message.content
+    except Exception as e:
+        raise ValueError(f"Groq API call failed: {e}")
 
-    cleaned = _clean_json(response.text)
+    cleaned = _clean_json(response_text)
     try:
         ideas = json.loads(cleaned)
         return ideas if isinstance(ideas, list) else []
     except json.JSONDecodeError as e:
-        raise ValueError(f"Ideas JSON parse failed: {e}\nRaw:\n{response.text}")
+        raise ValueError(f"Ideas JSON parse failed: {e}\nRaw:\n{response_text}")
