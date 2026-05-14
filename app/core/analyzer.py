@@ -29,6 +29,8 @@ def extract_breakdown(image_path: str, ad_id: str, progress_callback=None) -> di
     Raises ValueError if JSON cannot be parsed.
     """
     image_part = prepare_for_gemini(image_path)
+    
+    start_time = time.time()
 
     for attempt in range(5):
         try:
@@ -62,11 +64,16 @@ def extract_breakdown(image_path: str, ad_id: str, progress_callback=None) -> di
     except json.JSONDecodeError as e:
         raise ValueError(f"[{ad_id}] JSON parse failed: {e}\nRaw response:\n{raw}")
 
-    # Sleep proactively to avoid hitting tokens-per-minute limits on the free tier
-    for i in tqdm(range(5), desc=f"Cooldown after {ad_id}", leave=False):
-        if progress_callback:
-            progress_callback(i / 5.0, f"⏳ Cooldown after {ad_id}: {5 - i}s remaining")
-        time.sleep(1)
+    # Dynamic sleep to maintain 15 RPM (1 request every 4 seconds) for Gemini 3.1 Flash Lite free tier
+    elapsed = time.time() - start_time
+    sleep_time = max(0, 4.0 - elapsed)
+    
+    if sleep_time > 0:
+        sleep_secs = int(sleep_time) + 1
+        for i in tqdm(range(sleep_secs), desc=f"Cooldown after {ad_id}", leave=False):
+            if progress_callback:
+                progress_callback(i / float(sleep_secs), f"⏳ Cooldown after {ad_id}: {sleep_secs - i}s remaining")
+            time.sleep(1)
 
     breakdown["ad_id"] = ad_id
     breakdown["image_path"] = image_path
