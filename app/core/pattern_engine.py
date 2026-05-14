@@ -51,7 +51,7 @@ def detect_patterns(breakdowns: list[dict], scores: list[dict], brand: str) -> d
         response = groq_client.chat.completions.create(
             model=TEXT_MODEL,
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.2,
+            temperature=0.0,
         )
         response_text = response.choices[0].message.content
     except Exception as e:

@@ -63,9 +63,9 @@ def extract_breakdown(image_path: str, ad_id: str, progress_callback=None) -> di
         raise ValueError(f"[{ad_id}] JSON parse failed: {e}\nRaw response:\n{raw}")
 
     # Sleep proactively to avoid hitting tokens-per-minute limits on the free tier
-    for i in tqdm(range(15), desc=f"Cooldown after {ad_id}", leave=False):
+    for i in tqdm(range(5), desc=f"Cooldown after {ad_id}", leave=False):
         if progress_callback:
-            progress_callback(i / 15.0, f"⏳ Cooldown after {ad_id}: {15 - i}s remaining")
+            progress_callback(i / 5.0, f"⏳ Cooldown after {ad_id}: {5 - i}s remaining")
         time.sleep(1)
 
     breakdown["ad_id"] = ad_id

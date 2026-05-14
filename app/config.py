@@ -6,7 +6,7 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
-VISION_MODEL = "gemini-flash-latest"
+VISION_MODEL = "gemini-3.1-flash-lite"
 TEXT_MODEL = "llama-3.3-70b-versatile"
 
 # Scoring weights (sum = 100)

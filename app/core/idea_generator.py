@@ -42,7 +42,7 @@ def generate_ideas(pattern_report: dict, brand: str) -> list[dict]:
         response = groq_client.chat.completions.create(
             model=TEXT_MODEL,
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.4,
+            temperature=0.6,
         )
         response_text = response.choices[0].message.content
     except Exception as e:
