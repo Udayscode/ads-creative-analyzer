@@ -18,9 +18,11 @@ groq_client = Groq(api_key=GROQ_API_KEY)
 
 def _clean_json(text: str) -> str:
     text = text.strip()
-    text = re.sub(r"^```(?:json)?", "", text)
-    text = re.sub(r"```$", "", text)
-    return text.strip()
+    start = text.find('{')
+    end = text.rfind('}')
+    if start != -1 and end != -1 and end > start:
+        return text[start:end+1]
+    return text
 
 
 def detect_patterns(breakdowns: list[dict], scores: list[dict], brand: str) -> dict:
@@ -52,6 +54,8 @@ def detect_patterns(breakdowns: list[dict], scores: list[dict], brand: str) -> d
             model=TEXT_MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.0,
+            response_format={"type": "json_object"},
+            max_tokens=4000,
         )
         response_text = response.choices[0].message.content
     except Exception as e:
@@ -61,4 +65,10 @@ def detect_patterns(breakdowns: list[dict], scores: list[dict], brand: str) -> d
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError as e:
-        raise ValueError(f"Pattern JSON parse failed: {e}\nRaw:\n{response_text}")
+        # Graceful fallback instead of crashing the Streamlit app
+        return {
+            "winning_patterns": [{"pattern": "Incomplete Data", "description": "Analysis truncated.", "evidence": [], "confidence": "low"}],
+            "losing_patterns": [],
+            "brand_creative_signature": "Could not complete analysis due to API constraints.",
+            "biggest_gap": "N/A"
+        }
